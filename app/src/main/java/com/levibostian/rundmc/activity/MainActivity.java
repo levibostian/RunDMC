@@ -40,6 +40,13 @@ public class MainActivity extends ActionBarActivity {
         setupFragment();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        mHandler.removeCallbacks(mUpdater);
+    }
+
     private void setupFragment() {
         MainFragment fragment = MainFragment.newInstance();
         mListener = fragment;

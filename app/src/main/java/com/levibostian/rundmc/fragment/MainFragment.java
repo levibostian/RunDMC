@@ -83,62 +83,12 @@ public class MainFragment extends Fragment implements MainActivity.HandlerListen
 
     private void showImages() {
         mRunDmcGroupImageView.setVisibility(View.VISIBLE);
-        // mRunDmcGroupImageView.setImageResource(R.drawable.my);
-
-//        Thread thread = new Thread() {
-//            @Override
-//            public void run() {
-//                try {
-//                    while (!isInterrupted()) {
-//                        Thread.sleep(RUN_DMC_GROUP_TOGGLE_INTERVAL);
-//                        getActivity().runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                toggleRunDmcGroupImage();
-//                            }
-//                        });
-//                    }
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//
-//        thread.start();
 
         mListener.startHandler();
-
-//        new CountDownTimer(1000, 1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                Log.d("whatever", "tick");
-//                toggleRunDmcGroupImage();
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        }.start();
-
-//        getActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                toggleRunDmcGroupImage();
-//            }
-//        });
     }
 
     private void toggleRunDmcGroupImage() {
         Log.d("whatever", "toggled");
-
-//        if (mRunDmcGroupImageView.getVisibility() == View.VISIBLE) {
-//            mRunDmcGroupImageView.setVisibility(View.GONE);
-//            mRunDmcGroupInvertImageView.setVisibility(View.VISIBLE);
-//        } else {
-//            mRunDmcGroupImageView.setVisibility(View.VISIBLE);
-//            mRunDmcGroupInvertImageView.setVisibility(View.GONE);
-//        }
 
         if (mCurrentRunDmcImageRes == R.drawable.run_dmc_invert) {
             mCurrentRunDmcImageRes = R.drawable.run_dmc;
