@@ -1,6 +1,29 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_container"
-    tools:layout="@layout/fragment_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".MainActivityFragment">
+
+    <ImageView
+        android:id="@+id/run_dmc_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/run_dmc_logo"/>
+
+    <ImageView
+        android:id="@+id/run_dmc_group"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/run_dmc"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/run_dmc_invert_group"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/run_dmc_invert"
+        android:visibility="gone"/>
+
+</RelativeLayout>
