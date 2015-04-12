@@ -25,6 +25,9 @@ public class MainActivity extends ActionBarActivity {
 
     private Handler mHandler;
     private Runnable mRunDmcGroupRunnable;
+    private Runnable mMyTextRunnable;
+    private Runnable mATextRunnable;
+    private Runnable mShoesRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,24 @@ public class MainActivity extends ActionBarActivity {
                 mHandler.postDelayed(mRunDmcGroupRunnable, RUN_DMC_GROUP_TOGGLE_INTERVAL);
             }
         };
+        mMyTextRunnable = new Runnable() {
+            @Override
+            public void run() {
+                mRunDmcGroupImageView.setImageResource(R.drawable.a);
+            }
+        };
+        mATextRunnable = new Runnable() {
+            @Override
+            public void run() {
+                mRunDmcGroupImageView.setImageResource(R.drawable.adidas_shoes);
+            }
+        };
+        mShoesRunnable = new Runnable() {
+            @Override
+            public void run() {
+                mRunDmcGroupImageView.setImageResource(mCurrentRunDmcImageRes);
+            }
+        };
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -52,9 +73,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void showImages() {
-        mRunDmcGroupImageView.setVisibility(View.VISIBLE);
+        mRunDmcGroupImageView.setImageResource(R.drawable.my);
 
-        mHandler.post(mRunDmcGroupRunnable);
+        mRunDmcGroupImageView.setVisibility(View.VISIBLE);
+        mHandler.postDelayed(mMyTextRunnable, 700);
+        mHandler.postDelayed(mATextRunnable, 1200);
+        mHandler.postDelayed(mShoesRunnable, 1800);
+        mHandler.postDelayed(mRunDmcGroupRunnable, 2000);
     }
 
     private void toggleRunDmcGroupImage() {
