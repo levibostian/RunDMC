@@ -98,14 +98,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
 
+        removeHandlerCallbacks();
+
+        resetMediaPlayer();
+    }
+
+    private void removeHandlerCallbacks() {
+        mHandler.removeCallbacks(mMyTextRunnable);
+        mHandler.removeCallbacks(mATextRunnable);
+        mHandler.removeCallbacks(mShoesRunnable);
         mHandler.removeCallbacks(mRunDmcGroupRunnable);
-
-        if (mMediaPlayer != null) {
-            mMediaPlayer.stop();
-            mMediaPlayer.release();
-
-            mMediaPlayer = null;
-        }
     }
 
     @Override
@@ -128,6 +130,15 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+    private void resetMediaPlayer() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+
+            mMediaPlayer = null;
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -138,7 +149,12 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            resetMediaPlayer();
+            mRunDmcGroupImageView.setVisibility(View.GONE);
+            mRunDmcButton.setVisibility(View.VISIBLE);
+            removeHandlerCallbacks();
+
             return true;
         }
 
