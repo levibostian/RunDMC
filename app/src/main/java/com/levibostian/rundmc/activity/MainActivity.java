@@ -1,5 +1,7 @@
 package com.levibostian.rundmc.activity;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -33,6 +35,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 20, 0);
 
         mRunDmcButton = (ImageView) findViewById(R.id.run_dmc_button);
         mRunDmcGroupImageView = (ImageView) findViewById(R.id.run_dmc_group);
